@@ -1,0 +1,42 @@
+﻿@{
+    ViewBag.Title = "Demo";
+}
+
+<h1>HTMX Demo</h1>
+
+<div>
+    <h2>Simple AJAX</h2>
+    <button hx-get="/Demo/GetTime" hx-target="#time">Get Time</button>
+
+    <p>Time last clicked: <span id="time"></span></p>
+</div>
+
+<div>
+    <h2>Form Validation</h2>
+    <form hx-put="/Demo/Process" hx-trigger="submit" hx-target="#form-results">
+        <div id="validation-summary">
+
+        </div>
+
+        <div hx-post="/Demo/Validate" hx-trigger="change delay:500ms" hx-target="#validation-summary">
+            <div>
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+            <div>
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <div>
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" required>
+            </div>
+
+            <input type="submit" value="Process"/>
+        </div>
+    </form>
+
+    <div id="form-results">
+
+    </div>
+</div>
